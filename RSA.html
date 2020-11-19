@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body background="./Images/bg1.png">
+  <div class="icon"><a href="./index.html"><i class="fa fa-key" style="font-size:36px;color:white"></i></a></div>
+    <div class="outer"> <center>
+<div class="outer1" data-aos="fade-up" data-aos-delay="500">
+   <h4>Enter First Prime Number: <input type="number" id="p"></p>
+        Enter Second Prime Number: <input type="number"  id="q"></p>
+        Enter the Message(cipher text) : <input type="number"id="msg"> <div class="dropdown">
+          <span><i class="fa fa-info-circle"></i></span>
+          <div class="dropdown-content">
+          <p>A=1,B=2,C=3...</p>
+          </div>
+        </div></p>
+        Public Key: <p id="publickey"></p> 
+        Exponent: <p id="exponent"></p> 
+        Private Key: <p id="privatekey"></p>
+        Cipher Text: <p id="ciphertext"></p> 
+        <button onclick="RSA();" class="button"><h4>Encrypt</h4></button></h4>
+    </center>
+        </body> 
+        <script type="text/javascript"> 
+            function RSA() { 
+            var gcd, p, q, no, n, t, e, i, x; 
+            gcd = function (a, b) { return (!b) ? a : gcd(b, a % b); }; 
+            p = document.getElementById('p').value; 
+            q = document.getElementById('q').value; 
+            no = document.getElementById('msg').value; 
+            n = p * q; 
+            t = (p - 1) * (q - 1); 
+            for (e = 2; e < t; e++) { 
+            if (gcd(e, t) == 1) { 
+            break; 
+            } 
+            } 
+            for (i = 0; i < 10; i++) { 
+            x = 1 + i * t 
+            if (x % e == 0) { 
+            d = x / e; 
+            break; 
+            } 
+            } 
+            ctt = Math.pow(no, e).toFixed(0); 
+            ct = ctt % n; 
+            dtt = Math.pow(ct, d).toFixed(0); 
+            dt = dtt % n; 
+            document.getElementById('publickey').innerHTML = n; 
+            document.getElementById('exponent').innerHTML = e; 
+            document.getElementById('privatekey').innerHTML = d; 
+            document.getElementById('ciphertext').innerHTML = ct; 
+            } 
+            </script> 
+                    
+</div>
+</div>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

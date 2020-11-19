@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body background="./Images/bg1.png">
+  <div class="icon"><a href="./index.html"><i class="fa fa-key" style="font-size:36px;color:white"></i></a></div>
+    <div class="outer"> <center>
+<div class="outer1" data-aos="fade-up" data-aos-delay="500">
+   <h4>Enter message: <input type="text" id="str"></p>
+        Enter key: <input type="number"  id="n"></p>
+        Encrypted Message: <p id="encmsg"></p> 
+        <button onclick="CC();" class="button"><h4>Encrypt</h4></button></h4>
+    </center>
+        </body> 
+        <script type="text/javascript"> 
+            function CC() { 
+            var str, n; 
+            str = document.getElementById('str').value; 
+            amount = document.getElementById('n').value; 
+            var caesarShift = function (str, amount) {
+  // Wrap the amount
+  if (amount < 0) {
+    return caesarShift(str, amount + 26);
+  }
+
+  // Make an output variable
+  var output = "";
+
+  // Go through each character
+  for (var i = 0; i < str.length; i++) {
+    // Get the character we'll be appending
+    var c = str[i];
+
+    // If it's a letter...
+    if (c.match(/[a-z]/i)) {
+      // Get its code
+      var code = str.charCodeAt(i);
+
+      // Uppercase letters
+      if (code >= 65 && code <= 90) {
+        c = String.fromCharCode(((code - 65 + amount) % 26) + 65);
+      }
+
+      // Lowercase letters
+      else if (code >= 97 && code <= 122) {
+        c = String.fromCharCode(((code - 97 + amount) % 26) + 97);
+      }
+    }
+
+    // Append
+    output += c;
+  }
+
+  // All done!
+  return output;
+};
+
+            document.getElementById('encmsg').innerHTML = output; 
+            } 
+            </script> 
+                    
+</div>
+</div>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
