@@ -15,7 +15,7 @@ body{
     border-radius: 20px;
     text-align: center;
     padding: 10px 10px 10px 10px ;
-    width: 30%;
+    width: 40%;
 
 }
 
@@ -29,7 +29,6 @@ a{
 }
 .sample1{
     padding-top: 200px;
-    padding-left: 40%;
     align-content: center;
 }
 .outer{
